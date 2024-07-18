@@ -5,7 +5,13 @@ from src.book import Book
 
 
 class TestBook(unittest.TestCase):
+    """
+    Тесты для класса Book.
+    """
     def test_book_creation(self):
+        """
+        Тест создания экземпляра книги.
+        """
         book = Book("Title", "Author", 2020)
         self.assertEqual(book.title, "Title")
         self.assertEqual(book.author, "Author")
@@ -13,6 +19,9 @@ class TestBook(unittest.TestCase):
         self.assertEqual(book.status, "в наличии")
 
     def test_book_to_dict(self):
+        """
+        Тест преобразования экземпляра книги в словарь.
+        """
         book = Book("Title", "Author", 2020)
         book_dict = book.to_dict()
         self.assertEqual(book_dict['title'], "Title")
@@ -21,6 +30,9 @@ class TestBook(unittest.TestCase):
         self.assertEqual(book_dict['status'], "в наличии")
 
     def test_book_from_dict(self):
+        """
+        Тест создания экземпляра книги из словаря.
+        """
         book_data = {
             'id': 1,
             'title': "Title",

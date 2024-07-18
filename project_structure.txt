@@ -1,0 +1,19 @@
+.
+├── README.md
+├── data
+│   └── books.json
+├── project_structure.txt
+├── pyproject.toml
+├── src
+│   ├── __init__.py
+│   ├── book.py
+│   ├── library.py
+│   └── main.py
+├── test_books.json
+└── tests
+    ├── __init__.py
+    ├── test_book.py
+    ├── test_library.py
+    └── test_main.py
+
+4 directories, 13 files

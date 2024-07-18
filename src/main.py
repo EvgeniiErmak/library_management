@@ -5,6 +5,9 @@ from src.library import Library
 
 
 def main() -> None:
+    """
+    Основная функция для запуска приложения управления библиотекой.
+    """
     library = Library()
 
     while True:
@@ -33,12 +36,18 @@ def main() -> None:
             field = input("Искать по (title, author, year): ")
             query = input("Введите запрос: ")
             books = library.search_books(query, field)
-            for book in books:
-                print(f"ID: {book.id}, Название: {book.title}, Автор: {book.author}, Год: {book.year}, Статус: {book.status}")
+            if books:
+                for book in books:
+                    print(f"ID: {book.id}, Название: {book.title}, Автор: {book.author}, Год: {book.year}, Статус: {book.status}")
+            else:
+                print("Книги не найдены.")
         elif choice == '4':
             books = library.list_books()
-            for book in books:
-                print(f"ID: {book.id}, Название: {book.title}, Автор: {book.author}, Год: {book.year}, Статус: {book.status}")
+            if books:
+                for book in books:
+                    print(f"ID: {book.id}, Название: {book.title}, Автор: {book.author}, Год: {book.year}, Статус: {book.status}")
+            else:
+                print("В библиотеке нет книг.")
         elif choice == '5':
             book_id = int(input("Введите ID книги для изменения статуса: "))
             status = input("Введите новый статус (в наличии, выдана): ")
