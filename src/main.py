@@ -5,11 +5,12 @@ import sys
 from src.library import Library
 
 
-def main() -> None:
+def main(library=None) -> Library:
     """
     Основная функция для запуска приложения управления библиотекой.
     """
-    library = Library(data_file=os.path.join(os.path.dirname(__file__), '..', 'data', 'books.json'))
+    if library is None:
+        library = Library(data_file=os.path.join(os.path.dirname(__file__), '..', 'data', 'books.json'))
 
     while True:
         print("\n1. Добавить книгу")
@@ -89,7 +90,7 @@ def main() -> None:
                 print("Книга не найдена.")
         elif choice == '6':
             print("Выход из программы.")
-            sys.exit()
+            return library
         else:
             print("Неверный выбор, попробуйте снова.")
 

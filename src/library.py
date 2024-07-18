@@ -1,7 +1,7 @@
 # library_management/src/library.py
 
-import json
 import os
+import json
 from typing import List, Optional
 from src.book import Book
 
@@ -10,7 +10,7 @@ class Library:
     """
     Класс для управления библиотекой.
     """
-    def __init__(self, data_file: str = '../data/books.json') -> None:
+    def __init__(self, data_file: str = os.path.join(os.path.dirname(__file__), '..', 'data', 'books.json')) -> None:
         """
         Инициализация экземпляра библиотеки.
 
