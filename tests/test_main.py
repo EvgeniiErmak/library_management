@@ -16,7 +16,7 @@ class TestMain(unittest.TestCase):
         """
         Подготовка временной библиотеки для тестов.
         """
-        self.library = Library(data_file='test_books.json')
+        self.library = Library(data_file='../test_books.json')
         self.library.books = []
 
     @patch('builtins.input', side_effect=['1', 'Test Title', 'Test Author', '2020', '6'])

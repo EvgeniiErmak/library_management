@@ -12,7 +12,7 @@ class TestLibrary(unittest.TestCase):
         """
         Подготовка временной библиотеки для тестов.
         """
-        self.library = Library(data_file='test_books.json')
+        self.library = Library(data_file='../test_books.json')
         self.library.books = []
 
     def test_add_book(self):

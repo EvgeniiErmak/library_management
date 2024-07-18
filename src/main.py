@@ -1,5 +1,6 @@
 # library_management/src/main.py
 
+import os
 import sys
 from src.library import Library
 
@@ -8,7 +9,7 @@ def main() -> None:
     """
     Основная функция для запуска приложения управления библиотекой.
     """
-    library = Library()
+    library = Library(data_file=os.path.join(os.path.dirname(__file__), '..', 'data', 'books.json'))
 
     while True:
         print("\n1. Добавить книгу")

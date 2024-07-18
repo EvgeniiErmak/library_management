@@ -10,7 +10,7 @@ class Library:
     """
     Класс для управления библиотекой.
     """
-    def __init__(self, data_file: str = 'data/books.json') -> None:
+    def __init__(self, data_file: str = '../data/books.json') -> None:
         """
         Инициализация экземпляра библиотеки.
 
@@ -49,9 +49,9 @@ class Library:
         """
         Добавление новой книги в библиотеку.
 
-        :param title: title / Название книги
-        :param author: author / Автор книги
-        :param year: year / Год издания книги
+        :param title: Название книги
+        :param author: Автор книги
+        :param year: Год издания книги
         """
         new_book = Book(title, author, year)
         self.books.append(new_book)
