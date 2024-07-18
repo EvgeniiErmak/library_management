@@ -29,7 +29,7 @@ class Book:
         :return: Уникальный идентификатор книги
         """
         try:
-            with open('data/books.json', 'r', encoding='utf-8') as file:
+            with open('src/data/books.json', 'r', encoding='utf-8') as file:
                 books = json.load(file)
             return max(book['id'] for book in books) + 1
         except (FileNotFoundError, ValueError):

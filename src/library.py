@@ -1,6 +1,7 @@
 # library_management/src/library.py
 
 import json
+import os
 from typing import List, Optional
 from src.book import Book
 
@@ -24,6 +25,12 @@ class Library:
 
         :return: Список экземпляров книг
         """
+        if not os.path.exists(os.path.dirname(self.data_file)):
+            os.makedirs(os.path.dirname(self.data_file))
+        if not os.path.isfile(self.data_file):
+            with open(self.data_file, 'w', encoding='utf-8') as file:
+                json.dump([], file)
+
         try:
             with open(self.data_file, 'r', encoding='utf-8') as file:
                 books_data = json.load(file)
@@ -42,9 +49,9 @@ class Library:
         """
         Добавление новой книги в библиотеку.
 
-        :param title: Название книги
-        :param author: Автор книги
-        :param year: Год издания книги
+        :param title: title / Название книги
+        :param author: author / Автор книги
+        :param year: year / Год издания книги
         """
         new_book = Book(title, author, year)
         self.books.append(new_book)
@@ -84,7 +91,7 @@ class Library:
         :param field: Поле для поиска (title, author, year)
         :return: Список найденных книг
         """
-        return [book for book in self.books if query.lower() in getattr(book, field).lower()]
+        return [book for book in self.books if query.lower() in str(getattr(book, field)).lower()]
 
     def list_books(self) -> List[Book]:
         """

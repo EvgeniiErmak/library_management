@@ -33,8 +33,23 @@ def main() -> None:
             else:
                 print("Книга не найдена.")
         elif choice == '3':
-            field = input("Искать по (title, author, year): ")
-            query = input("Введите запрос: ")
+            print("Выберите параметр для поиска:")
+            print("1. Title / Название")
+            print("2. Author / Автор")
+            print("3. Year / Год издания")
+            param_choice = input("Введите номер параметра: ")
+
+            if param_choice == '1':
+                field = 'title'
+            elif param_choice == '2':
+                field = 'author'
+            elif param_choice == '3':
+                field = 'year'
+            else:
+                print("Неверный выбор, попробуйте снова.")
+                continue
+
+            query = input(f"Введите значение для поиска по {field}: ")
             books = library.search_books(query, field)
             if books:
                 for book in books:
@@ -50,7 +65,23 @@ def main() -> None:
                 print("В библиотеке нет книг.")
         elif choice == '5':
             book_id = int(input("Введите ID книги для изменения статуса: "))
-            status = input("Введите новый статус (в наличии, выдана): ")
+            if not library.find_book_by_id(book_id):
+                print("Книга не найдена.")
+                continue
+
+            print("Выберите новый статус:")
+            print("1. В наличии")
+            print("2. Выдана")
+            status_choice = input("Введите номер нового статуса: ")
+
+            if status_choice == '1':
+                status = "в наличии"
+            elif status_choice == '2':
+                status = "выдана"
+            else:
+                print("Неверный выбор, попробуйте снова.")
+                continue
+
             if library.update_book_status(book_id, status):
                 print("Статус книги обновлен.")
             else:
